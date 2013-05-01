@@ -28,6 +28,20 @@ var IdeaGarden = (function() {
 		console.log("IdeaGarden.compositionSuggestion");
 		IdeaGardenSuggestion.composition.suggestion(context);
 	};
+
+	/**
+	* In case we do want to process which Idea Garden suggestion to show
+	* based on incoming data, we can call the "chooseSuggestion"
+	* function that will analyze incoming data and then choose
+	* the appropriate suggestion.
+	*
+	* @args: dataAndContext: A JSON object that contains at least two
+	* parameters: data, which is an object, and context,
+	* which is also an object.
+	*/
+	suggestions.chooseSuggestion = function(dataAndContext) {
+		console.log("processEvent: ");
+	};
 	
 	return suggestions;
 })();
