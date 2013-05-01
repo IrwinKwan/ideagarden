@@ -1,7 +1,8 @@
 #helpSection {
 	font-family: sans-serif;
-	color: black;
-	background-color: "gainsboro";
+	color: "black";
+	border: 1px solid #c0c0c0;
+	height: 200px;
 }
 
 body {
@@ -17,4 +18,8 @@ body {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
             box-sizing: border-box;
+}
+
+.floating {
+	float: right;
 }
