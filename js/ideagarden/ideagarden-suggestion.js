@@ -23,7 +23,7 @@ IdeaGardenSuggestion.suggestionUtils = {
 	* Encloses the suggestion in the proper tags.
 	*/
 	encloseInDiv: function(DOMidentifier, suggestionHTML) {
-		return "<div id=" + DOMidentifier + ">" + suggestionHTML + "</div>";
+		return '<div id=' + DOMidentifier + ' class="ideagarden">' + suggestionHTML + '</div>';
 	},
 
 	/**

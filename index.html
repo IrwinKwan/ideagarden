@@ -1,6 +1,8 @@
 <!doctype html>
-<html lang='en-US'>
+<html lang='en'>
 <head>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+	
 	<link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.2.custom.css" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 	<link type="text/css" rel="stylesheet" href="js/ideagarden/ideagarden.css" />
@@ -13,14 +15,32 @@
 	<script type="text/javascript" src="js/ideagarden/ideagarden.js"></script>
 	
 	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-composition.js"></script>
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-repeat.js"></script>
 
 	<script type="text/javascript">
 $(document).ready(function() {
-
 	console.log("DOM has been loaded.");
+	
+	(function($) {
+		$.fn.extend( {
+			textScanner: function(helpElement) {
+				$(this).on("keyup focus", function() {
+					readInput(this, helpElement);
+				});
+				function readInput(src, helpElement) {
+					var program = src.value;
+					IdeaGarden.chooseSuggestion(program, {element: helpElement});
+				}
+			}
+		});
+	})(jQuery);
+	
+	var helpElement = $("#helpSection");
+	$("#programText").textScanner(helpElement);
+	
 	$("#getHelp").button();
 
-	$("#getHelp").on('click', function() {
+	$("#getHelp").on('mouseover click', function() {
 		console.log("Button clicked.");
 		IdeaGarden.compositionSuggestion({});
 	});
@@ -28,32 +48,31 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-
+<div class="container">
 <h1>A Programming Environment</h1>
 
 <div id="hostEnvironment">
 
-	Write some Python below:
+	<p class="lead">Programming is easy!</p>
+	
+	<p>Write a program.</p>
 
-	<pre>
+<form>
+	<fieldset>
+		<legend>Programming is fun.</legend>
+		<label>Code</label>
+		<textarea id="programText" rows="10" placeholder='Write your code here.'></textarea>
+<div>
+<button id="getHelp">Idea Garden, help me!</button>
+</div>
+</form>
 
-myList = [1, 2, 3, 4, 5]
-for x in myList:
-	print "x is: " + x
 
-if not myList:
-	print "Your list is empty, and your interpreter is buggy."
-
-
-
-	</pre>
-
-	<button id="getHelp">Idea Garden, help me!</button>
 
 	<div id="helpSection">
 	</div>
 </div>
-
+</div>
 </body>
 
 </html>
