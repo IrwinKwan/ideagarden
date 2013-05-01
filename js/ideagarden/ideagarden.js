@@ -1,8 +1,10 @@
 var IdeaGarden = (function() {
 
-	var suggestions = {}; // The host namespace where the suggestions live
-	var DOMidentifier = "ideaGarden-suggestion";
+	var suggestions = {}; // The host namespace where the suggestions live. Don't change this.
 
+	/**
+	* Change these to match your host environment.
+	*/
 	suggestions.ENVIRONMENT = {
 		PROGRAM:"script",
 		PROGRAMS:"scripts",
@@ -11,14 +13,15 @@ var IdeaGarden = (function() {
 		image:"js/ideagarden/ideagarden-cell.png"
 	};
 
-	function produceSuggestion(content, parameters, context) {
-		console.log("private ProduceSuggestion");
-		return "<div id=" + this.DOMidentifier + ">" + parameters + "</div>";
-	}
-
+	/**
+	* Add your own customized suggestion here.
+	*/
 	suggestions.repeatSuggestion = function(context) {
 		console.log("host.repeatSuggestion");
-		// Need to add a module file for this.
+
+		// You will need to add a module file for this!
+		// Copy the template given for ideagarden-suggestion-composition.js
+		// and use those methods as a starting point.
 	};
 
 	suggestions.compositionSuggestion = function(context) {
