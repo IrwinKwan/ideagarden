@@ -18,61 +18,85 @@
 	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-repeat.js"></script>
 
 	<script type="text/javascript">
-$(document).ready(function() {
-	console.log("DOM has been loaded.");
-	
-	(function($) {
-		$.fn.extend( {
-			textScanner: function(helpElement) {
-				$(this).on("keyup focus", function() {
-					readInput(this, helpElement);
-				});
-				function readInput(src, helpElement) {
-					var program = src.value;
-					IdeaGarden.chooseSuggestion(program, {element: helpElement});
-				}
-			}
-		});
-	})(jQuery);
-	
-	var helpElement = $("#helpSection");
-	$("#programText").textScanner(helpElement);
-	
-	$("#getHelp").button();
+	$(document).ready(function() {
+		console.log("DOM has been loaded.");
 
-	$("#getHelp").on('mouseover click', function() {
-		console.log("Button clicked.");
-		IdeaGarden.compositionSuggestion({});
+		(function($) {
+			$.fn.extend( {
+				textScanner: function(helpElement) {
+					$(this).on("keyup focus", function() {
+						readInput(this, helpElement);
+					});
+					function readInput(src, helpElement) {
+						var program = src.value;
+						IdeaGarden.chooseSuggestion(program, {element: helpElement});
+					}
+				}
+			});
+		})(jQuery);
+
+		var helpElement = $("#helpSection");
+		$("#programText").textScanner(helpElement);
+
+		$("#getHelp").button();
+
+		$("#getHelp").on('mouseover click', function() {
+			console.log("Button clicked.");
+			IdeaGarden.compositionSuggestion({});
+		});
 	});
-});
-</script>
+	</script>
 </head>
 <body>
-<div class="container">
-<h1>A Programming Environment</h1>
+	<div class="container-fluid">
+		<h1>A Programming Environment</h1>
 
-<div id="hostEnvironment">
+		<div class="row-fluid">
+			
+			<div class="span12">
+				<p class="lead">Programming is easy!</p>
 
-	<p class="lead">Programming is easy!</p>
-	
-	<p>Write a program.</p>
+				<p>Write a program.</p>
+			</div>
 
-<form>
-	<fieldset>
-		<legend>Programming is fun.</legend>
-		<label>Code</label>
-		<textarea id="programText" rows="10" placeholder='Write your code here.'></textarea>
-<div>
-<button id="getHelp">Idea Garden, help me!</button>
-</div>
-</form>
+			<div class="row-fluid">
+				<div class="span8">
+					<div id="hostEnvironment">
+						<form>
+							<fieldset>
+								<label>Code</label>
+								<textarea id="programText" class="boxsizingborder" rows="10" placeholder='Write your code here.'></textarea>
+								
+							</form>
+						</div>
+					</div>
+					<div class="span4">
+						<div>
+							<button id="getHelp">Idea Garden, help me!</button>
+						</div>
+						<div id="helpSection">
+						</div>
 
+					</div>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span4">
+					<p>In ideagarden.js: <code>ENVIRONMENT</code> should be either overridden in ideagarden.js before use, or it should be initialized using a call.</p>
+					<p>To create a new suggestion, copy and paste the IdeaGardenSuggestion class.
 
+						Implement the <code>suggestionContent()</code> and the <code>suggestionBehavior()</code> methods.
+						If the suggestion is event-triggered, also implement the <code>chooseToShow()</code> method.
+						If the suggestion is explicitly called, add a call for the interface to the IdeaGarden class. </p>
+					</div>
+					<div class="span8">
+						<h2>The Idea Garden Architecture</h2>
+						<div id="documentation">
 
-	<div id="helpSection">
-	</div>
-</div>
-</div>
-</body>
+							<img src="img/ideagarden-architecture.png"/>
+						</div>
+					</div>
+				</div>
+			</body>
 
-</html>
+			</html>
