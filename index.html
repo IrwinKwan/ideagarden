@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en-US'>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.2.custom.css" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="js/ideagarden/ideagarden.css" />
+
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.js"></script>
+
+	<!-- Idea Garden -->
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion.js"></script>
+	<script type="text/javascript" src="js/ideagarden/ideagarden.js"></script>
+	
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-composition.js"></script>
+
+	<script type="text/javascript">
+$(document).ready(function() {
+
+	console.log("DOM has been loaded.");
+	$("#getHelp").button();
+
+	$("#getHelp").on('click', function() {
+		console.log("Button clicked.");
+		IdeaGarden.compositionSuggestion({});
+	});
+});
+</script>
+</head>
+<body>
+
+<h1>A Programming Environment</h1>
+
+<div id="hostEnvironment">
+
+	Write some Python below:
+
+	<pre>
+
+myList = [1, 2, 3, 4, 5]
+for x in myList:
+	print "x is: " + x
+
+if not myList:
+	print "Your list is empty, and your interpreter is buggy."
+
+
+
+	</pre>
+
+	<button id="getHelp">Idea Garden, help me!</button>
+
+	<div id="helpSection">
+	</div>
+</div>
+
+</body>
+
+</html>
