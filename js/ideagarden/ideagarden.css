@@ -1,5 +1,10 @@
 .ideagarden {
-    font-style: italic;
-    background: "#f0ffff";
-    padding: 1em;
+	font-style: italic;
+	background: "#f0ffff";
+	padding: 1em;
  }
+
+.ideagarden-suggestion-repeat code {
+	font-family: courier;
+	font-style: normal;
+}

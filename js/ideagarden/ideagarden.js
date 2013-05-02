@@ -1,8 +1,17 @@
+/**
+ * @class
+ * The main IdeaGarden class.
+ * @singleton
+ *
+ * If you add any suggestions, they should be added here.
+ */
 var IdeaGarden = (function() {
 
-	var suggestions = {}; // The host namespace where the suggestions live. Don't change this.
+	var suggestions = {};
 	var listener = {};
+
 	/**
+	* @cfg
 	* Change these to match your host environment.
 	*/
 	suggestions.ENVIRONMENT = {
@@ -19,13 +28,13 @@ var IdeaGarden = (function() {
 	* function that will analyze incoming data and then choose
 	* the appropriate suggestion.
 	*
-	* @args: dataAndContext: A JSON object that contains at least two
-	* parameters: data, which is an object, and context,
-	* which is also an object.
+	* @param {Object} [programText] The user's current program.
+	* @param {Object} [context] The user's environment context, which may include
+	* a number of keys and values used in the suggestion itself.
 	*/
 	suggestions.chooseSuggestion = function(programText, context) {
 		console.log("processEvent - program: " + programText);
-		listener(programText);
+		listener(programText, context);
 	};
 
 	/**
@@ -40,10 +49,6 @@ var IdeaGarden = (function() {
 		}
 		// Add additional conditions to check here.
 	};
-
-	/**
-	* Add your own customized suggestions here.
-	*/
 
 	/**
 	* A non-event-driven suggestion

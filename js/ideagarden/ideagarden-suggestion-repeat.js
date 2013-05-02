@@ -1,28 +1,44 @@
 /**
+ * @class IdeaGardenSuggestion.repeat
+ *
  * This is a customized Idea Garden Suggestion.
  * You should use the utilities available in IdeaGardenSuggestion.suggestionUtils 
  * and aliased here as utils to easily assemble the suggestion itself.
  */
-IdeaGardenSuggestion.repeat = {
-	// This is for convenience.
-	utils: IdeaGardenSuggestion.suggestionUtils,
+IdeaGardenSuggestion.repeat = (function() {
+	var suggestion = {},
+	utils = IdeaGardenSuggestion.suggestionUtils;
 
 	/** 
 	* Change this identifier to the
 	* DOM ID the Idea Garden template will have.
 	*/
-	DOMidentifier: 'ideagarden-suggestion-repeat',
+	DOMidentifier = 'ideagarden-suggestion-repeat';
+	DOMclass = 'ideagarden-suggestion-repeat';
 
 	/**
-	* @private Returns the ID of the Idea Garden DOM element.
+	* @method
+	* Returns the ID of the Idea Garden DOM element.
 	*
-	* Please don't modify this.
+	* Please don't modify 
 	*/
-	getSuggestionID: function() {
-		return '#' + this.DOMidentifier;
-	},
+	function getSuggestionID() {
+		return '#' + DOMidentifier;
+	}
 
 	/**
+	* @method
+	* Returns the class of the Idea Garden DOM element.
+	*
+	* Please don't modify 
+	*/
+	function getClassID() {
+		return '#' + DOMclass;
+	}
+
+	/**
+	* @method
+	* @template
 	* Identifies if this particular suggestion should be shown to the user
 	* in the event-driven model.
 	*
@@ -31,43 +47,51 @@ IdeaGardenSuggestion.repeat = {
 	*
 	* Please imolement this!
 	*/
-	chooseToShow: function(programText, context) {
+	suggestion.chooseToShow = function(programText, context) {
 		return programText.indexOf("for") >= 0;
-	},
+	};
 
 	/**
+	* @method
+	* @template
 	* Defines the content of the suggestion.
 	*
 	* Please implement this!
 	*/
-	suggestionContent: function(context) {
-		return "Are you trying to use a loop in your " + this.utils.emphasize(IdeaGarden.ENVIRONMENT.PROGRAM) + "?";
-	},
+	function suggestionContent(context) {
+		return sprintf("Are you trying to use a loop in your %s? You just typed <code>%s</code>.",
+			utils.emphasize(IdeaGarden.ENVIRONMENT.PROGRAM),
+			context.program);
+	}
 
 	/**
+	* @method
+	* @template
 	* Implements the behavior of the suggestion.
 	* 
 	* Please implement this!
 	*/
-	suggestionBehavior: function(suggestionHTML) {
+	function suggestionBehavior(suggestionHTML) {
 		console.log("SuggestionBehavior: " + suggestionHTML);
 
-		// User implements this.
-		$(this.getSuggestionID()).toggle("slide", { direction: "left" });
+		// User implements 
+		$(getSuggestionID()).toggle("slide", { direction: "left" });
 		$("#helpSection").html(suggestionHTML);
-		$(this.getSuggestionID()).delay(4000).fadeOut(500);
-	},
+		$(getSuggestionID()).delay(4000).fadeOut(500);
+	}
 
 	/**
-	* @private Assembles the suggestion.
+	* @method
+	* Assembles the suggestion.
 	*
-	* Please don't modify this.
+	* Please don't modify 
 	*/
-	suggestion: function(context) {
+	suggestion.suggestion = function(context) {
 		console.log("IdeaGardenSuggestionComposition.suggestionContent");
 
-		suggestionHTML = this.utils.content(this.DOMidentifier, this.suggestionContent(context), IdeaGarden.ENVIRONMENT, context);
-		this.suggestionBehavior(suggestionHTML);
-	}
-};
+		suggestionHTML = utils.content(DOMidentifier, DOMclass, suggestionContent(context), IdeaGarden.ENVIRONMENT, context);
+		suggestionBehavior(suggestionHTML);
+	};
 
+	return suggestion;
+}());
