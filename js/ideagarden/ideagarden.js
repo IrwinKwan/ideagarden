@@ -19,7 +19,7 @@ var IdeaGarden = (function() {
 		PROGRAMS:"scripts",
 		ELEMENT:"row",
 		ELEMENTS:"rows", "LOOP CONSTRUCT":"repeat",
-		image:"js/ideagarden/ideagarden-cell.png"
+		image:"js/ideagarden/img/ideagarden-cell.png"
 	};
 
 	/**
