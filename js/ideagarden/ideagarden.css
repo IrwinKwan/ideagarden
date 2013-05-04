@@ -8,3 +8,26 @@
 	font-family: courier;
 	font-style: normal;
 }
+
+.ideagarden-panel {
+
+}
+
+.ideagarden-content {
+
+}
+
+.ig-portrait {
+	border: 6px inset #c0c0c0;
+	padding: 4px;
+	width: 50px;
+	position: relative;
+	bottom: 0;
+	left: 81px;
+	right: 0;
+	top: -81px;
+}
+
+.ig-wireless {
+	position: relative;
+}

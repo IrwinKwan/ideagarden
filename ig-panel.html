@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang='en'>
+<head>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.css" />
+	
+	<link type="text/css" rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.2.custom.css" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="js/ideagarden/ideagarden.css" />
+
+	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.js"></script>
+
+	<!-- Idea Garden dependency to make it much easier to print large strings. -->
+	<script type="text/javascript" src="js/sprintf.min.js"></script>
+
+	<!-- Idea Garden -->
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestionutils.js"></script>
+	<script type="text/javascript" src="js/ideagarden/ideagarden.js"></script>
+	
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-composition.js"></script>
+	<script type="text/javascript" src="js/ideagarden/ideagarden-suggestion-repeat.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#getCall').on('mouseover', function() {
+			$(".ig-wireless").animate({
+				'margin-left': '+=5px',
+			}, 100, function() {
+				$(".ig-wireless").animate({
+					'margin-left': '-=5px',
+				}, 100, function() {
+					$(".ig-wireless").removeAttr('style');
+				});
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="helpSupport">
+			<div class="ideagarden-panel">
+				<div class="ig-wireless">
+					<img src="js/ideagarden/img/wireless.png"/>
+				</div>
+				<img src="js/ideagarden/img/cellphone.png"/>
+				
+				<div class="ig-portrait">
+					<img src="js/ideagarden/img/face.png"/>
+				</div>
+				<div class="ideagarden-content">
+
+				</div>
+			</div>		
+		</div>
+		<button id="getCall">Receive a call</button>
+	</div>
+</body>
+</html>
